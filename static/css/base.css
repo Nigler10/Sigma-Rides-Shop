@@ -1,0 +1,38 @@
+h1 {
+    color: yellow;
+    text-align: center;
+}
+
+.yanami {
+    margin-left: 42%;
+    height: 300px;
+    width: auto;
+}
+
+body {
+    background: red;
+}
+
+header {
+    text-align: center;
+    padding: 25px 20px 25px;
+    background-color: yellow;
+}
+
+a {
+    text-decoration: none;
+    color: yellow;
+    font-size: 25px;
+    padding: 10px 20px 10px;
+    background-color: red;
+}
+
+a:hover {
+    color: yellow;
+    background-color: black;
+}
+
+p {
+    color: yellow;
+    font-size: 20px;
+}

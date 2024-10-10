@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<title>Home</title>
+<h1>
+    <marquee>ANNA YANAMI</marquee>
+</h1>
+<img alt="Yanami" class="yanami" id="image" src="{% static 'images/yanami.jpg' %}">
+
+<input id="gifPath" type="hidden" value="{% static 'images/milos.gif' %}">
+<input id="imagePath" type="hidden" value="{% static 'images/yanami.jpg' %}">
+{%  endblock content %}

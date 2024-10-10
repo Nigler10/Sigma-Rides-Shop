@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'images/favicon.ico' %}" rel="icon">
+</head>
+<body>
+{% include 'app/navbar.html' %}
+
+{% block content %}
+<!--pages-->
+{% endblock content %}
+<script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

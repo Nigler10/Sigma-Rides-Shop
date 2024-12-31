@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Edit Category</h1>
+    <form action="{% url 'category_update' object.pk %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Update" class="input_button">
+        <a href="{% url 'category_list' %}">Cancel</a>
+    </form>
+{%  endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+    <h2><a href="{% url 'category_create' %}">+ New Category</a></h2>
+    <br>
+    {% for category in categorys %}
+        <div>
+            <h2><a href="{% url 'category_detail' category.pk %}">{{ category.name }}</a></h2>
+        </div>
+    {% endfor %}
+
+{%  endblock content %}

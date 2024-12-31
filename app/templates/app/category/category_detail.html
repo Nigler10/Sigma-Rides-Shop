@@ -1,0 +1,10 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+        <div>
+            <h2><a href="{% url 'category_list' %}">{{ category.name }}</a></h2>
+            <p>{{category.description}}</p>
+        </div>
+        <a href="{% url 'category_update' category.pk %}">+ Edit Category</a>
+        <a href="{% url 'category_delete' category.pk %}">- Delete Category</a>
+{%  endblock content %}

@@ -1,38 +1,52 @@
 h1 {
-    color: yellow;
+    color: #ECDFCC;
     text-align: center;
 }
 
 .yanami {
-    margin-left: 42%;
+    margin-left: 37%;
     height: 300px;
-    width: auto;
+    width: 300px;
 }
 
 body {
-    background: red;
+    background: #A59D84;
 }
 
 header {
     text-align: center;
     padding: 25px 20px 25px;
-    background-color: yellow;
+    background-color: #C1BAA1;
 }
 
 a {
     text-decoration: none;
-    color: yellow;
+    color: #ECEBDE;
     font-size: 25px;
     padding: 10px 20px 10px;
-    background-color: red;
+    background-color: #A59D84;
+}
+
+.input_button {
+    border: none;
+    color: #ECDFCC;
+    font-size: 25px;
+    padding: 10px 20px 10px;
+    cursor: pointer;
+    background-color: #A59D84;
 }
 
 a:hover {
-    color: yellow;
-    background-color: black;
+    color: #ECDFCC;
+    background-color: #C1BAA1;
+}
+
+.input_button:hover {
+    color: #ECDFCC;
+    background-color: #C1BAA1;
 }
 
 p {
-    color: yellow;
+    color: #ECDFCC;
     font-size: 20px;
 }

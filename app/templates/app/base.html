@@ -8,10 +8,12 @@
 </head>
 <body>
 {% include 'app/navbar.html' %}
-
+<main>
 {% block content %}
 <!--pages-->
 {% endblock content %}
+</main>
+{% include 'app/footer.html' %}
 <script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>

@@ -8,15 +8,36 @@ h1 {
     height: 300px;
     width: 300px;
 }
-
+/* MAIN */
 body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     background: #A59D84;
 }
 
 header {
-    text-align: center;
-    padding: 25px 20px 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #C1BAA1;
+    padding: 30px;
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+}
+
+header a {
+    margin-left: 12%;
+}
+
+footer {
+    background: #C1BAA1;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    color: #ECEBDE;
 }
 
 a {
@@ -25,6 +46,11 @@ a {
     font-size: 25px;
     padding: 10px 20px 10px;
     background-color: #A59D84;
+}
+
+a:hover {
+    color: #ECEBDE;
+    background-color: #C1BAA1;
 }
 
 .input_button {
@@ -36,10 +62,6 @@ a {
     background-color: #A59D84;
 }
 
-a:hover {
-    color: #ECDFCC;
-    background-color: #C1BAA1;
-}
 
 .input_button:hover {
     color: #ECDFCC;
@@ -49,4 +71,66 @@ a:hover {
 p {
     color: #ECDFCC;
     font-size: 20px;
+}
+
+/*PRODUCTS CSS*/
+main {
+    margin-top: 125px;
+    padding: 20px;
+}
+
+main h2, span {
+    color: #ECEBDE;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.product-card {
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #C1BAA1;
+}
+
+.product-card img {
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: transform 1.0s;
+}
+
+.product-card img:hover {
+    transform: scale(0.9);
+}
+
+.product-card h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #A59D84;
+    color: #ECEBDE;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: #ECDFCC;
+    background-color: #C1BAA1;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }

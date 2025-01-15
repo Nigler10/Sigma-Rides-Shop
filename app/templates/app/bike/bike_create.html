@@ -1,0 +1,13 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main-content">
+    <h1>New Bike</h1>
+    <form action="{% url 'bike_create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Save" class="input_button">
+        <a href="{% url 'bike_list' %}">Cancel</a>
+    </form>
+</div>
+{% endblock content %}

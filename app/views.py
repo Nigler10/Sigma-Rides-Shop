@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView,  ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Category
+from .models import Category, Bike
 from django.urls import reverse_lazy
 
 class HomePageView(TemplateView):
@@ -10,7 +10,7 @@ class HomePageView(TemplateView):
 class AboutPageView(TemplateView):
     template_name = 'app/about.html'
 
-#CategoryCRUD
+#Start of Category CRUD
 class CategoryListView(ListView):
     model = Category
     context_object_name = 'categorys'
@@ -25,15 +25,40 @@ class CategoryCreateView(CreateView):
     model = Category
     fields = ['name', 'description']
     template_name = 'app/category/category_create.html'
-    success_url = reverse_lazy('category_list')
 
 class CategoryUpdateView(UpdateView):
     model = Category
     fields = ['name', 'description']
     template_name = 'app/category/category_update.html'
-    success_url = reverse_lazy('category_list')
 
 class CategoryDeleteView(DeleteView):
     model = Category
     template_name = 'app/category/category_delete.html'
     success_url = reverse_lazy('category_list')
+#END of Category CRUD
+
+#Start of Bike CRUD
+class BikeListView(ListView):
+    model = Bike
+    context_object_name = 'bikes'
+    template_name = 'app/bike/bike_list.html'
+
+class BikeDetailView(DetailView):
+    model = Bike
+    context_object_name = 'bike'
+    template_name = 'app/bike/bike_detail.html'
+
+class BikeCreateView(CreateView):
+    model = Bike
+    fields = ['name', 'category', 'suppliers', 'price', 'stock_quantity', 'image']
+    template_name = 'app/bike/bike_create.html'
+
+class BikeUpdateView(UpdateView):
+    model = Bike
+    fields = ['name', 'category', 'suppliers', 'price', 'stock_quantity', 'image']
+    template_name = 'app/bike/bike_update.html'
+
+class BikeDeleteView(DeleteView):
+    model = Bike
+    template_name = 'app/bike/bike_delete.html'
+    success_url = reverse_lazy('bike_list')

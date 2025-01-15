@@ -1,0 +1,8 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+        <h2><a href="{% url 'bike_list' %}">{{ bike.name }}</a></h2>
+        <p>{{bike.description}}</p>
+        <a href="{% url 'bike_update' bike.pk %}">+ Edit Bike</a>
+        <a href="{% url 'bike_delete' bike.pk %}">- Delete Bike</a>
+{%  endblock content %}

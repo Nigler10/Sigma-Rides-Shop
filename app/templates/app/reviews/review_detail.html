@@ -1,0 +1,9 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+    <h2><a href="{% url 'review_list' %}">Back</a></h2>
+    <h2>{{ review.user }}</h2>
+    <p>{{ review.feedback }}</p>
+    <a href="{% url 'review_update' review.pk %}">+ Edit Review</a>
+    <a href="{% url 'review_delete' review.pk %}">- Delete Review</a>
+{%  endblock content %}

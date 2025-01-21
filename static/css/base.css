@@ -27,7 +27,7 @@ header {
 }
 
 header a {
-    margin-left: 12%;
+    margin-left: 8%;
 }
 
 footer {
@@ -46,6 +46,8 @@ a {
     font-size: 25px;
     padding: 10px 20px 10px;
     background-color: #A59D84;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 a:hover {
@@ -87,6 +89,14 @@ main h2, span {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
+}
+
+.close {
+    padding: 0 0 0 0;
+    margin: auto;
+    border-radius: 50%;
+    float: right;
+    background-color: #C1BAA1;
 }
 
 .product-card {
@@ -134,3 +144,89 @@ main h2, span {
     font-weight: bold;
     margin-bottom: 10px;
 }
+
+.add {
+    margin-left: 85%;
+    text-decoration: none;
+    color: #ECEBDE;
+    font-size: 25px;
+    padding: 5px 10px 5px 15px;
+}
+
+.add:hover {
+    background-color: #C1BAA1;
+}
+
+form {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+/* Labels */
+label, h1 {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Multiple select */
+select[multiple] {
+    height: 100px;
+    overflow-y: auto;
+}
+
+/* Buttons */
+input[type="submit"] {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 25px;
+    color: #ECEBDE;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"] {
+    background-color: #A59D84;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #C1BAA1;
+}
+
+/* Focused fields */
+input:focus,
+select:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 3px rgba(128, 189, 255, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+}
+

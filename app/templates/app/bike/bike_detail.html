@@ -1,8 +1,19 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block content %}
-        <h2><a href="{% url 'bike_list' %}">{{ bike.name }}</a></h2>
+<section class="products">
+    <div class="product-card">
+    <a href="{% url 'bike_list' %}" class="close">x</a>
+        {% if bike.image %}
+            <img src="{{ bike.image.url }}" alt="{{ bike.name }}">
+        {% else %}
+            <p>No image available.</p>
+        {% endif %}
+        <h2>{{ bike.name }}</h2>
+        <span class="price">${{ bike.price }}</span><br>
         <p>{{bike.description}}</p>
         <a href="{% url 'bike_update' bike.pk %}">+ Edit Bike</a>
         <a href="{% url 'bike_delete' bike.pk %}">- Delete Bike</a>
+    </div>
+</section>
 {%  endblock content %}

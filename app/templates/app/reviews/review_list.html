@@ -1,0 +1,13 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+    <a href="{% url 'review_create' %}" class="add">+ Add Review</a>
+
+    {% for review in reviews %}
+        <fieldset>
+            <legend><h2>{{ review.user }}</h2></legend>
+            <p>{{ review }}</p>
+            <a href="{% url 'review_detail' review.pk %}">See more...</a>
+        </fieldset>
+    {% endfor %}
+{%  endblock content %}

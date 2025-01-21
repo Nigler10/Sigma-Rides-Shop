@@ -1,11 +1,62 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block content %}
+<title>Add Bike</title>
 <div class="main-content">
-    <h1>New Bike</h1>
     <form action="{% url 'bike_create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{form.as_p}}
+        <h1>New Bike</h1>
+        <div>
+            <label for="id_name">Name</label>
+            <input type="text" id="id_name" name="name">
+            {% for error in form.name.errors %}
+                <small class="form-error" style="color: red">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div>
+            <label for="id_category">Category</label>
+            <select id="id_category" name="category">
+                {% for category in categorys %}
+                    <option value="{{category.pk}}" {% if category.pk == form.category.value %} selected {% endif %}>
+                        {{category}}
+                    </option>
+                {% endfor %}
+            </select>
+            {% for error in form.category.errors %}
+                <small style="color: red" class="form-error">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div>
+            <label for="id_supplier">Supplier</label>
+            <select id="id_supplier" name="supplier" multiple>
+                {% for supplier in suppliers %}
+                    <option value="{{supplier.pk}}" {% if supplier.pk == form.supplier.value %} selected {% endif %}>
+                        {{supplier}}
+                    </option>
+                {% endfor %}
+            </select>
+            {% for error in form.supplier.errors %}
+                <small style="color: red" class="form-error">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div>
+            <label for="id_price">Price</label>
+            <input type="number" id="id_price" name="price">
+            {% for error in form.price.errors %}
+                <small style="color: red" class="form-error">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div>
+            <label for="id_stock_quantity">Stock</label>
+            <input type="number" id="id_stock_quantity" name="stock_quantity">
+            {% for error in form.stock_quantity.errors %}
+                <small style="color: red" class="form-error">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div>
+            <label for="id_image">Image</label>
+            <input type="file" id="id_image" name="image" accept="image/*">
+        </div>
         <input type="submit" value="Save" class="input_button">
         <a href="{% url 'bike_list' %}">Cancel</a>
     </form>

@@ -30,7 +30,7 @@ class Supplier(models.Model):
 class Bike(models.Model):
     name = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='bikes')
-    suppliers = models.ManyToManyField(Supplier, related_name='bikes')
+    supplier = models.ManyToManyField(Supplier, related_name='bikes')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock_quantity = models.PositiveIntegerField()
     image = models.ImageField(null=True, blank=True, upload_to='images/')
@@ -41,6 +41,15 @@ class Bike(models.Model):
     def get_absolute_url(self):
         return reverse("bike_detail", kwargs = {"pk": self.pk})
 
+class Review(models.Model):
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
+    feedback = models.TextField()
+
+    def __str__(self):
+        return self.feedback
+
+    def get_absolute_url(self):
+        return reverse("review_detail", kwargs = {"pk": self.pk})
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=50)

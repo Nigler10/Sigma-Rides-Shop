@@ -6,6 +6,6 @@
         {% csrf_token %}
         <p>Are you sure you want to delete {{bike.name}}?</p>
         <input type="submit" value="Confirm" class="input_button">
-        <a href="{% url 'bike_list' %}">Cancel</a>
+        <a href="{% url 'bike_detail' bike.pk %}" class="input_button">Cancel</a>
     </form>
 {%  endblock content %}

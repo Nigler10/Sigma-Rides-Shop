@@ -1,11 +1,11 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block content %}
-    <form action="{% url 'bike_update' object.pk %}" method="post" enctype="multipart/form-data">
-        <h1>Edit Bike</h1>
+    <h1>Edit Comment</h1>
+    <form action="{% url 'comment_update' object.pk %}" method="post">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Update" class="input_button">
-        <a href="{% url 'bike_detail' bike.pk %}" class="input_button">Cancel</a>
+        <a href="{% url 'bike_detail' bike.pk %}">Cancel</a>
     </form>
 {%  endblock content %}

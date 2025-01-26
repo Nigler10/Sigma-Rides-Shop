@@ -1,13 +1,12 @@
 {% extends 'app/base.html' %}
-{% load static %}
 {% block content %}
 <div class="main-content">
     <h1>New Review</h1>
-    <form action="{% url 'review_create' %}" method="post">
+    <form method="post">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Submit" class="input_button">
-        <a href="{% url 'review_list' %}" class="input_button">Cancel</a>
+        <a href="{% url 'bike_list' %}" class="input_button">Cancel</a>
     </form>
 </div>
 {% endblock content %}

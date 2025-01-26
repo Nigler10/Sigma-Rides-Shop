@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView,  ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.models import User
 
-from .models import Category, Bike, Review, Supplier
+from django.contrib.auth.models import User
+from .models import Category, Bike, Review, Supplier, Comment
+
 from django.urls import reverse_lazy
 
 class HomePageView(TemplateView):
@@ -59,6 +60,7 @@ class BikeCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['categorys'] = Category.objects.all()
         context['suppliers'] = Supplier.objects.all()
+        context['users'] = User.objects.all()
         return context
 
 class BikeUpdateView(UpdateView):
@@ -98,4 +100,32 @@ class ReviewDeleteView(DeleteView):
     template_name = 'app/reviews/review_delete.html'
     success_url = reverse_lazy('review_list')
 #End of Review CRUD
+
+#Start of Comment CRUD
+class CommentCreateView(CreateView):
+    model = Comment
+    fields = ['user', 'body']
+    template_name = 'app/comments/comment_create.html'
+    success_url = reverse_lazy('bike_list')
+
+    def form_valid(self, form):
+        form.instance.bike_id = self.kwargs['pk']
+        return super().form_valid(form)
+    def get_success_url(self):
+        return reverse_lazy('bike_detail', kwargs={'pk': self.kwargs['pk']})
+
+class CommentUpdateView(UpdateView):
+    model = Comment
+    fields = ['user', 'body']
+    template_name = 'app/comments/comment_update.html'
+    success_url = reverse_lazy('bike_list')
+
+    def get_success_url(self):
+        return reverse_lazy('bike_detail', kwargs={'pk': self.kwargs['pk']})
+
+class CommentDeleteView(DeleteView):
+    model = Comment
+    template_name = 'app/comments/comment_delete.html'
+    success_url = reverse_lazy('bike_list')
+#End of Comment CRUD
 

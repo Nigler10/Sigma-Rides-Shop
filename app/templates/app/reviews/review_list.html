@@ -4,10 +4,12 @@
     <a href="{% url 'review_create' %}" class="add">+ Add Review</a>
 
     {% for review in reviews %}
+        <a href="{% url 'review_detail' review.pk %}" class="review_link">
         <fieldset>
             <legend><h2>{{ review.user }}</h2></legend>
+            <p>{{ review.created_date }}</p>
             <p>{{ review }}</p>
-            <a href="{% url 'review_detail' review.pk %}">See more...</a>
         </fieldset>
+        </a>
     {% endfor %}
 {%  endblock content %}

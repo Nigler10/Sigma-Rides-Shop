@@ -1,8 +1,11 @@
 from django.urls import path
 from .views import HomePageView, AboutPageView
+
 from .views import CategoryCreateView, CategoryDeleteView, CategoryDetailView, CategoryListView, CategoryUpdateView
 from .views import BikeCreateView, BikeDeleteView, BikeDetailView, BikeListView, BikeUpdateView
 from .views import ReviewCreateView, ReviewDeleteView, ReviewDetailView, ReviewListView, ReviewUpdateView
+from .views import CommentCreateView, CommentDeleteView, CommentUpdateView
+
 from Corpuz import settings
 from django.conf.urls.static import static
 
@@ -31,4 +34,9 @@ urlpatterns = [
     path('review/<int:pk>/edit', ReviewUpdateView.as_view(), name='review_update'),
     path('review/<int:pk>/delete', ReviewDeleteView.as_view(), name='review_delete'),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    #Item_Review
+    path('bike/<int:pk>/comment', CommentCreateView.as_view(), name='comment_create'),
+    path('bike/<int:pk>/comment/edit', CommentUpdateView.as_view(), name='comment_update'),
+    path('bike/<int:pk>/comment/delete', CommentDeleteView.as_view(), name='comment_delete'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

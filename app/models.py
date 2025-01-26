@@ -44,6 +44,7 @@ class Bike(models.Model):
 class Review(models.Model):
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     feedback = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
         return self.feedback
@@ -70,3 +71,13 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order {self.id} by {self.customer}"
+
+class Comment(models.Model):
+    bike = models.ForeignKey(Bike, related_name="comments", on_delete=models.CASCADE)
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
+    body = models.TextField()
+    date_time = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.bike.name, self.user)
+

@@ -26,10 +26,6 @@ header {
     z-index: 9999;
 }
 
-header a {
-    margin-left: 8%;
-}
-
 footer {
     background: #C1BAA1;
     padding: 20px;
@@ -40,8 +36,9 @@ footer p {
     color: #ECEBDE;
 }
 
-a {
+header a {
     text-decoration: none;
+    margin-left: 8%;
     color: #ECEBDE;
     font-size: 25px;
     padding: 10px 20px 10px;
@@ -50,29 +47,51 @@ a {
     transition: background-color 0.3s ease;
 }
 
-a:hover {
+header a:hover {
     color: #ECEBDE;
     background-color: #C1BAA1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .input_button {
     border: none;
+    font-size: 24.5px;
+    text-decoration: none;
+    display: inline-block;
     color: #ECDFCC;
-    font-size: 25px;
-    padding: 10px 20px 10px;
+    padding: 5px 10px;
     cursor: pointer;
+    border-radius: 4px;
     background-color: #A59D84;
+    transition: background-color 0.3s ease;
 }
-
 
 .input_button:hover {
     color: #ECDFCC;
     background-color: #C1BAA1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 p {
     color: #ECDFCC;
     font-size: 20px;
+}
+
+.anchor {
+    display: inline-block;
+    text-decoration: none;
+    color: #ECEBDE;
+    padding: 10px 20px;
+    background-color: #A59D84;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.anchor:hover {
+    color: #ECDFCC;
+    background-color: #C1BAA1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 /*PRODUCTS CSS*/
@@ -97,6 +116,9 @@ main h2, span {
     border-radius: 50%;
     float: right;
     background-color: #C1BAA1;
+    text-decoration: none;
+    color: #ECEBDE;
+    transition: background-color 0.3s ease;
 }
 
 .product-card {
@@ -132,10 +154,12 @@ main h2, span {
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
     color: #ECDFCC;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     background-color: #C1BAA1;
 }
 
@@ -151,10 +175,12 @@ main h2, span {
     color: #ECEBDE;
     font-size: 25px;
     padding: 5px 10px 5px 15px;
+    transition: background-color 0.3s ease;
 }
 
 .add:hover {
     background-color: #C1BAA1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 form {
@@ -228,5 +254,29 @@ select:focus {
     form {
         width: 90%;
     }
+}
+
+/* Style for the review link */
+.review_link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+/* Ensure the entire fieldset is clickable */
+.review_link fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #A59D84;
+    padding: 15px;
+}
+
+/* Hover effect for the entire fieldset */
+.review_link:hover fieldset {
+    background-color: #C1BAA1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 

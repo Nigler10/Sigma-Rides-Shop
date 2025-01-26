@@ -1,6 +1,6 @@
 {% extends 'app/base.html' %}
-{% load static %}
 {% block content %}
+<title>{{ bike.name }} Detail</title>
 <section class="products">
     <div class="product-card">
     <a href="{% url 'bike_list' %}" class="close">x</a>
@@ -10,10 +10,26 @@
             <p>No image available.</p>
         {% endif %}
         <h2>{{ bike.name }}</h2>
-        <span class="price">${{ bike.price }}</span><br>
+        <span class="price">₱{{ bike.price }}</span><br>
         <p>{{bike.description}}</p>
-        <a href="{% url 'bike_update' bike.pk %}">+ Edit Bike</a>
-        <a href="{% url 'bike_delete' bike.pk %}">- Delete Bike</a>
+        <a href="{% url 'bike_update' bike.id %}" class="anchor">+ Edit Bike</a>
+        <a href="{% url 'bike_delete' bike.id %}" class="anchor">- Delete Bike</a>
+        <hr>
+
+        <h2>Comments</h2>
+        <a href="{% url 'comment_create' bike.pk %}" class="anchor">Add Comment</a>
+        {% if bike.comments.exists %}
+            {% for comment in bike.comments.all %}
+                <p>{{ comment.user }} - {{ comment.date_time }}</p>
+                <p>{{ comment.body }}</p>
+                <a href="{% url 'comment_update' bike.pk %}" class="btn">Edit Comment</a>
+                <a href="{% url 'comment_delete' bike.pk %}" class="btn">Delete Comment</a>
+                <hr>
+            {% endfor %}
+        {% else %}
+            <p>No comments yet.</p>
+            <hr>
+        {% endif %}
     </div>
 </section>
 {%  endblock content %}

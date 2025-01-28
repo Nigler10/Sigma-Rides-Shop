@@ -3,7 +3,7 @@
 {% block content %}
 <title>Add Bike</title>
 <div class="main-content">
-    <form action="{% url 'bike_create' %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'bike_create' %}" method="post" enctype="multipart/form-data" class="formm">
         {% csrf_token %}
         <h1>New Bike</h1>
         <div>

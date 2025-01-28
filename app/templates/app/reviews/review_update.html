@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <h1>Edit Review</h1>
-    <form action="{% url 'review_update' object.pk %}" method="post">
+    <form action="{% url 'review_update' object.pk %}" method="post" class="formm">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Update" class="input_button">

@@ -1,10 +1,10 @@
 {% extends 'app/base.html' %}
 {% block content %}
 <div class="main-content">
-    <h1>New Review</h1>
-    <form method="post">
+    <form method="post" class="formm">
+        <h1>New Comment</h1>
         {% csrf_token %}
-        {{form.as_p}}
+        {{ form.as_p }}
         <input type="submit" value="Submit" class="input_button">
         <a href="{% url 'bike_list' %}" class="input_button">Cancel</a>
     </form>

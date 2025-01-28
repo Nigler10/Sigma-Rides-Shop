@@ -1,11 +1,10 @@
 {% extends 'app/base.html' %}
-{% load static %}
 {% block content %}
-    <h1>Delete Review</h1>
-    <form action="{% url 'comment_delete' object.pk %}" method="post">
+    <form method="POST" class="formm">
         {% csrf_token %}
-        <p>Are you sure you want to delete {{ comment.body }}?</p>
-        <input type="submit" value="Confirm" class="input_button">
-        <a href="{% url 'bike_list' %}">Cancel</a>
+        <h1>Delete Review</h1>
+        <p style="color: black">Are you sure you want to delete the comment "{{ object.body }}" by {{ object.username }}?</p>
+        <input type="submit" value="Delete" class="input_button">
+        <a href="{% url 'bike_detail' object.bike.pk %}" class="input_button">Cancel</a>
     </form>
 {%  endblock content %}

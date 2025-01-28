@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <h1>Delete Bike</h1>
-    <form action="{% url 'bike_delete' object.pk %}" method="post">
+    <form action="{% url 'bike_delete' object.pk %}" method="post" class="formm">
         {% csrf_token %}
         <p>Are you sure you want to delete {{bike.name}}?</p>
         <input type="submit" value="Confirm" class="input_button">

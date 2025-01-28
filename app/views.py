@@ -1,10 +1,12 @@
 from django.shortcuts import render
+
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.contrib.auth.models import User
 from .models import Category, Bike, Review, Supplier, Comment
 
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 
 class HomePageView(TemplateView):
@@ -45,6 +47,16 @@ class BikeListView(ListView):
     model = Bike
     context_object_name = 'bikes'
     template_name = 'app/bike/bike_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.get('q', '')
+        if query:
+            filtered_bikes = Bike.objects.filter(name__icontains=query)
+        else:
+            filtered_bikes = Bike.objects.all()
+        context['bikes'] = filtered_bikes
+        return context
 
 class BikeDetailView(DetailView):
     model = Bike
@@ -104,7 +116,7 @@ class ReviewDeleteView(DeleteView):
 #Start of Comment CRUD
 class CommentCreateView(CreateView):
     model = Comment
-    fields = ['user', 'body']
+    fields = ['username', 'body']
     template_name = 'app/comments/comment_create.html'
     success_url = reverse_lazy('bike_list')
 
@@ -116,16 +128,29 @@ class CommentCreateView(CreateView):
 
 class CommentUpdateView(UpdateView):
     model = Comment
-    fields = ['user', 'body']
+    fields = ['username', 'body']
     template_name = 'app/comments/comment_update.html'
-    success_url = reverse_lazy('bike_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Add the bike object to the context using the `bike_pk` from the URL
+        context['bike'] = get_object_or_404(Bike, pk=self.kwargs['bike_pk'])
+        return context
 
     def get_success_url(self):
-        return reverse_lazy('bike_detail', kwargs={'pk': self.kwargs['pk']})
+        # Redirect to the `bike_detail` view after updating the comment
+        return reverse_lazy('bike_detail', kwargs={'pk': self.kwargs['bike_pk']})
 
 class CommentDeleteView(DeleteView):
     model = Comment
     template_name = 'app/comments/comment_delete.html'
-    success_url = reverse_lazy('bike_list')
+
+    def get_object(self):
+        # Find the comment based on `bike_pk` and `comment.pk`
+        return get_object_or_404(Comment, pk=self.kwargs['pk'], bike__pk=self.kwargs['bike_pk'])
+
+    def get_success_url(self):
+        # Redirect to the bike's detail page after deleting the comment
+        return reverse_lazy('bike_detail', kwargs={'pk': self.kwargs['bike_pk']})
 #End of Comment CRUD
 

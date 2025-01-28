@@ -100,7 +100,7 @@ main {
     padding: 20px;
 }
 
-main h2, span {
+main h2, span, p {
     color: #ECEBDE;
 }
 
@@ -175,6 +175,7 @@ main h2, span {
     color: #ECEBDE;
     font-size: 25px;
     padding: 5px 10px 5px 15px;
+    border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
@@ -183,7 +184,7 @@ main h2, span {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-form {
+.formm {
     width: 60%;
     margin: 50px auto;
     padding: 20px;
@@ -280,3 +281,75 @@ select:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* Styling for the header bar */
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: transparent;
+}
+
+/* Search form styling */
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+/* Search container for input and icon */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+/* Search input field */
+.search-input {
+    padding: 10px;
+    border: none;
+    outline: none;
+    width: 200px; /* Adjust the width of the search bar */
+    font-size: 16px;
+    background-color: transparent;
+    color: white;
+}
+
+/* Placeholder color */
+.search-input::placeholder {
+    color: white;
+}
+
+/* Search button with icon */
+.search-btn {
+    margin-bottom: 16px;
+    background-color: #C1BAA1;
+    border: none;
+    padding: 13px;
+    cursor: pointer;
+    color: #ECEBDE;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #C1BAA1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* New Bike button */
+.add_button {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #ECEBDE;
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #A59D84;
+    transition: background-color 0.3s ease;
+}
+
+.add_button:hover {
+    background-color: #C1BAA1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}

@@ -34,9 +34,9 @@ urlpatterns = [
     path('review/<int:pk>/edit', ReviewUpdateView.as_view(), name='review_update'),
     path('review/<int:pk>/delete', ReviewDeleteView.as_view(), name='review_delete'),
 
-    #Item_Review
+    #Comment
     path('bike/<int:pk>/comment', CommentCreateView.as_view(), name='comment_create'),
-    path('bike/<int:pk>/comment/edit', CommentUpdateView.as_view(), name='comment_update'),
-    path('bike/<int:pk>/comment/delete', CommentDeleteView.as_view(), name='comment_delete'),
+    path('bike/<int:bike_pk>/comment/<int:pk>/update', CommentUpdateView.as_view(), name='comment_update'),
+    path('bike/<int:bike_pk>/comment/<int:pk>/delete', CommentDeleteView.as_view(), name='comment_delete'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

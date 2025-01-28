@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <h1>Delete Review</h1>
-    <form action="{% url 'review_delete' object.pk %}" method="post">
+    <form action="{% url 'review_delete' object.pk %}" method="post" class="formm">
         {% csrf_token %}
         <p>Are you sure you want to delete {{ review.feedback }}?</p>
         <input type="submit" value="Confirm" class="input_button">

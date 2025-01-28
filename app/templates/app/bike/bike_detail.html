@@ -11,25 +11,23 @@
         {% endif %}
         <h2>{{ bike.name }}</h2>
         <span class="price">₱{{ bike.price }}</span><br>
-        <p>{{bike.description}}</p>
+        <p>{{ bike.description }}</p>
         <a href="{% url 'bike_update' bike.id %}" class="anchor">+ Edit Bike</a>
         <a href="{% url 'bike_delete' bike.id %}" class="anchor">- Delete Bike</a>
         <hr>
 
-        <h2>Comments</h2>
+        <h3 style="color: #ECEBDE; display: inline-block">Comments | </h3>
         <a href="{% url 'comment_create' bike.pk %}" class="anchor">Add Comment</a>
-        {% if bike.comments.exists %}
-            {% for comment in bike.comments.all %}
-                <p>{{ comment.user }} - {{ comment.date_time }}</p>
-                <p>{{ comment.body }}</p>
-                <a href="{% url 'comment_update' bike.pk %}" class="btn">Edit Comment</a>
-                <a href="{% url 'comment_delete' bike.pk %}" class="btn">Delete Comment</a>
-                <hr>
-            {% endfor %}
-        {% else %}
+        {% if not bike.comments.all %}
             <p>No comments yet.</p>
-            <hr>
         {% endif %}
+        {% for comment in bike.comments.all %}
+            <hr>
+            <p>{{ comment.username }} - {{ comment.date_time }}</p>
+            <p>{{ comment.body }}</p>
+            <a href="{% url 'comment_update' bike.pk comment.pk %}" class="btn">Edit Comment</a>
+            <a href="{% url 'comment_delete' bike.pk comment.pk %}" class="btn">Delete Comment</a>
+        {% endfor %}
     </div>
 </section>
 {%  endblock content %}

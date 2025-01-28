@@ -2,7 +2,18 @@
 {% load static %}
 {% block content %}
 <title>Bikes</title>
-<a href="{% url 'bike_create' %}" class="add">New Bike +</a>
+<div class="header-bar">
+    <form method="get" action="{% url 'bike_list' %}" class="search-form">
+        <div class="search-container">
+            <input type="text" name="q" placeholder="Search for Bike..." value="{{ search_query }}" class="search-input">
+            <button type="submit" class="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+    <a href="{% url 'bike_create' %}" class="add_button">New Bike +</a>
+</div>
+
 <h2>New Arrival</h2>
 <section class="products">
     {% for bike in bikes %}

@@ -73,11 +73,11 @@ class Order(models.Model):
         return f"Order {self.id} by {self.customer}"
 
 class Comment(models.Model):
-    bike = models.ForeignKey(Bike, related_name="comments", on_delete=models.CASCADE)
-    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
+    bike = models.ForeignKey("Bike", related_name="comments", on_delete=models.CASCADE)
+    username = models.CharField(max_length=200, null=True)
     body = models.TextField()
     date_time = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return '%s - %s' % (self.bike.name, self.user)
+        return '%s - %s' % (self.bike.name, self.username)
 

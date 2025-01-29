@@ -1,12 +1,15 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .models import Category, Bike, Review, Supplier, Comment
+from .forms import CommentForm
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 
 class HomePageView(TemplateView):
@@ -72,7 +75,7 @@ class BikeCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['categorys'] = Category.objects.all()
         context['suppliers'] = Supplier.objects.all()
-        context['users'] = User.objects.all()
+        context['users'] = get_user_model().objects.all()
         return context
 
 class BikeUpdateView(UpdateView):
@@ -114,21 +117,22 @@ class ReviewDeleteView(DeleteView):
 #End of Review CRUD
 
 #Start of Comment CRUD
-class CommentCreateView(CreateView):
+class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
-    fields = ['username', 'body']
+    fields = ['body']
     template_name = 'app/comments/comment_create.html'
-    success_url = reverse_lazy('bike_list')
 
     def form_valid(self, form):
-        form.instance.bike_id = self.kwargs['pk']
+        form.instance.bike_id = self.kwargs['pk']  # Assign the bike ID
+        form.instance.username = self.request.user  # Assign the logged-in user
         return super().form_valid(form)
+
     def get_success_url(self):
         return reverse_lazy('bike_detail', kwargs={'pk': self.kwargs['pk']})
 
 class CommentUpdateView(UpdateView):
     model = Comment
-    fields = ['username', 'body']
+    fields = ['body']
     template_name = 'app/comments/comment_update.html'
 
     def get_context_data(self, **kwargs):

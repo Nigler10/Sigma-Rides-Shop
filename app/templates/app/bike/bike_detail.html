@@ -17,13 +17,19 @@
         <hr>
 
         <h3 style="color: #ECEBDE; display: inline-block">Comments | </h3>
-        <a href="{% url 'comment_create' bike.pk %}" class="anchor">Add Comment</a>
+        <form method="POST" action="{% url 'comment_create' bike.pk %}">
+            {% csrf_token %}
+            <textarea name="body" placeholder="Write a comment..." required></textarea>
+            <button type="submit">Post Comment</button>
+        </form>
+        <hr>
+
         {% if not bike.comments.all %}
             <p>No comments yet.</p>
         {% endif %}
         {% for comment in bike.comments.all %}
             <hr>
-            <p>{{ comment.username }} - {{ comment.date_time }}</p>
+            <p><strong>{{ comment.username }}</strong> - {{ comment.date_time }}</p>
             <p>{{ comment.body }}</p>
             <a href="{% url 'comment_update' bike.pk comment.pk %}" class="btn">Edit Comment</a>
             <a href="{% url 'comment_delete' bike.pk comment.pk %}" class="btn">Delete Comment</a>

@@ -11,6 +11,15 @@
 <body>
 {% include 'app/navbar.html' %}
 <main>
+    {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}</p>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+        </form>
+    {% else %}
+        <p>You are not logged in</p>
+    {% endif %}
 {% block content %}
 <!--pages-->
 {% endblock content %}

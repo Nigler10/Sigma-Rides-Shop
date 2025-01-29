@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<title>Sign up</title>
+
+<form method="post" class="formm">
+    {% csrf_token %}
+    <h1>Sign up</h1>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter you username" name="username" required>
+        <br><br>
+        <label for="password1">Password</label>
+        <input type="password" placeholder="Enter your Password" name="password1" required>
+        <br><br>
+        <label for="password2">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" name="password2" required>
+        <br><br>
+        <label for="phone_number">Phone Number</label>
+        <input type="number" placeholder="Enter your Phone Number" name="phone_number" required>
+        <br><br>
+        <label for="age">age</label>
+        <input type="number" placeholder="Enter you Age" name="age" required>
+    </div>
+    <button type="submit">Sign In</button>
+</form>
+{%  endblock content %}

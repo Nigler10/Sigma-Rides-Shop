@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.context_processors import media
 from django.urls import reverse
+from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -42,7 +43,7 @@ class Bike(models.Model):
         return reverse("bike_detail", kwargs = {"pk": self.pk})
 
 class Review(models.Model):
-    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     feedback = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
@@ -74,7 +75,7 @@ class Order(models.Model):
 
 class Comment(models.Model):
     bike = models.ForeignKey("Bike", related_name="comments", on_delete=models.CASCADE)
-    username = models.CharField(max_length=200, null=True)
+    username = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     body = models.TextField()
     date_time = models.DateTimeField(auto_now_add=True, null=True)
 

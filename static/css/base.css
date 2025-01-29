@@ -113,7 +113,6 @@ main h2, span, p {
 .close {
     padding: 0 0 0 0;
     margin: auto;
-    border-radius: 50%;
     float: right;
     background-color: #C1BAA1;
     text-decoration: none;
@@ -324,11 +323,12 @@ select:focus {
 /* Search button with icon */
 .search-btn {
     margin-bottom: 16px;
-    background-color: #C1BAA1;
+    background-color: #A59D84;
     border: none;
     padding: 13px;
     cursor: pointer;
     color: #ECEBDE;
+    border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
@@ -344,7 +344,7 @@ select:focus {
     color: #ECEBDE;
     font-size: 20px;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: #A59D84;
     transition: background-color 0.3s ease;
 }
@@ -353,3 +353,4 @@ select:focus {
     background-color: #C1BAA1;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
+

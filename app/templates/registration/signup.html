@@ -3,7 +3,7 @@
 {% block content %}
 <title>Sign up</title>
 
-<form method="post" class="formm">
+<form method="post" class="formmm">
     {% csrf_token %}
     <h1>Sign up</h1>
     <div>
@@ -19,9 +19,9 @@
         <label for="phone_number">Phone Number</label>
         <input type="number" placeholder="Enter your Phone Number" name="phone_number" required>
         <br><br>
-        <label for="age">age</label>
+        <label for="age">Age</label>
         <input type="number" placeholder="Enter you Age" name="age" required>
     </div>
-    <button type="submit">Sign In</button>
+    <center><button type="submit" class="input_button">Sign In</button></center>
 </form>
 {%  endblock content %}

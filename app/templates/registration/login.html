@@ -3,7 +3,7 @@
 {% block content %}
 <title>Login</title>
 
-<form method="post" class="formm">
+<form method="post" class="formmm">
     {% csrf_token %}
     <h1>Login</h1>
     <div>
@@ -13,6 +13,6 @@
         <label for="password">Password</label>
         <input type="password" placeholder="Enter your password" name="password" required>
     </div>
-    <button type="submit">Log In</button>
+    <center><button type="submit" class="input_button">Log In</button></center>
 </form>
 {%  endblock content %}

@@ -1,12 +1,12 @@
 <div class="navbar modern-navbar">
     <header class="container flex-container">
-        <a href="{% url 'profile' %}" class="logo-container">
             {% if user.is_authenticated %}
-                <p>Welcome Back {{ user.username }}!</p>
+                <a href="{% url 'profile' %}" class="logo-container">
+                    <p>Welcome Back {{ user.username }}!</p>
+                </a>
             {% else %}
                 <p>You are not logged in</p>
             {% endif %}
-        </a>
         <nav>
             <ul class="nav-list">
                 <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>

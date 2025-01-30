@@ -253,6 +253,14 @@ main h2, span, p {
     border-radius: 8px;
 }
 
+.formmm {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
 /* Labels */
 label, h1 {
     display: block;
@@ -265,6 +273,8 @@ label, h1 {
 input[type="text"],
 input[type="number"],
 input[type="file"],
+input[type="password"],
+input[type="email"],
 select {
     width: 96%;
     padding: 10px;

@@ -1,13 +1,13 @@
 {% extends "app/base.html" %}
 
 {% block content %}
-  <h2>Delete Account</h2>
-  <p>Are you sure you want to delete your account? This action cannot be undone.</p>
   
-  <form method="post">
+  <form method="post" class="formmm">
     {% csrf_token %}
-    <button type="submit" style="color: red;">Yes, Delete My Account</button>
+    <h2 style="color: gray;">Delete Account</h2>
+    <p style="color: gray;">Are you sure you want to delete your account? This action cannot be undone.</p>
+    <input type="submit" value="Confirm" class="input_button">
+    <a href="{% url 'profile' %}" class="input_button">Cancel</a>
   </form>
-  
-  <a href="{% url 'profile' %}">Cancel</a>
+
 {% endblock %}

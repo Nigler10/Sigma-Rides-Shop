@@ -1,15 +1,14 @@
-from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
 
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from django.contrib.auth import get_user_model
-from .models import Category, Bike, Review, Supplier, Comment
+from .models import Category, Bike, Review, Supplier, Comment, Cart
 from .forms import CommentForm, ReviewForm
 
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 
 class HomePageView(TemplateView):
@@ -161,4 +160,35 @@ class CommentDeleteView(DeleteView):
         # Redirect to the bike's detail page after deleting the comment
         return reverse_lazy('bike_detail', kwargs={'pk': self.kwargs['bike_pk']})
 #End of Comment CRUD
+
+#Start of Cart CRUD
+class CartListView(LoginRequiredMixin, ListView):
+    model = Cart
+    context_object_name = 'cart_items'
+    template_name = 'app/cart/cart.html'
+
+    def get_queryset(self):
+        return Cart.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cart_items = self.get_queryset()
+        context['total_price'] = sum(item.total_price() for item in cart_items)
+        return context
+
+class AddToCartView(LoginRequiredMixin, View):
+    def get(self, request, bike_id):
+        bike = get_object_or_404(Bike, id=bike_id)
+        cart_item, created = Cart.objects.get_or_create(user=request.user, bike=bike)
+        if not created:
+            cart_item.quantity += 1
+            cart_item.save()
+        return redirect('bike_list')
+
+class RemoveFromCartView(LoginRequiredMixin, View):
+    def get(self, request, cart_id):
+        cart_item = get_object_or_404(Cart, id=cart_id, user=request.user)
+        cart_item.delete()
+        return redirect('cart_view')
+#End of Cart CRUD
 

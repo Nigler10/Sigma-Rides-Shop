@@ -1,12 +1,20 @@
 <div class="navbar modern-navbar">
     <header class="container flex-container">
-            {% if user.is_authenticated %}
-                <a href="{% url 'profile' %}" class="logo-container">
-                    <p>Welcome Back {{ user.username }}!</p>
-                </a>
-            {% else %}
-                <p>You are not logged in</p>
-            {% endif %}
+        <!--add your cart icon here-->
+        <a href="{% url 'cart_view' %}" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            {% with cart_count=request.user.cart_set.count %}
+                <span class="cart-badge">{{ cart_count }}</span>
+            {% endwith %}
+        </a>
+
+        {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}" class="logo-container">
+            <p>Welcome Back {{ user.username }}!</p>
+        </a>
+        {% else %}
+        <p>You are not logged in</p>
+        {% endif %}
         <nav>
             <ul class="nav-list">
                 <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>

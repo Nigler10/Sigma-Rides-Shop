@@ -5,6 +5,7 @@ from .views import CategoryCreateView, CategoryDeleteView, CategoryDetailView, C
 from .views import BikeCreateView, BikeDeleteView, BikeDetailView, BikeListView, BikeUpdateView
 from .views import ReviewCreateView, ReviewDeleteView, ReviewDetailView, ReviewListView, ReviewUpdateView
 from .views import CommentCreateView, CommentDeleteView, CommentUpdateView
+from .views import BikeListView, CartListView, AddToCartView, RemoveFromCartView
 
 from Corpuz import settings
 from django.conf.urls.static import static
@@ -38,5 +39,11 @@ urlpatterns = [
     path('bike/<int:pk>/comment', CommentCreateView.as_view(), name='comment_create'),
     path('bike/<int:bike_pk>/comment/<int:pk>/update', CommentUpdateView.as_view(), name='comment_update'),
     path('bike/<int:bike_pk>/comment/<int:pk>/delete', CommentDeleteView.as_view(), name='comment_delete'),
+
+    #Cart
+    path('cart/', CartListView.as_view(), name='cart_view'),
+    path('add-to-cart/<int:bike_id>/', AddToCartView.as_view(), name='add_to_cart'),
+    path('remove-from-cart/<int:cart_id>/', RemoveFromCartView.as_view(), name='remove_from_cart'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

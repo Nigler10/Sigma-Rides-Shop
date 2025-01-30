@@ -82,3 +82,11 @@ class Comment(models.Model):
     def __str__(self):
         return '%s - %s' % (self.bike.name, self.username)
 
+class Cart(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    bike = models.ForeignKey(Bike, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def total_price(self):
+        return self.quantity * self.bike.price
+

@@ -26,15 +26,10 @@
         <h2>{{ bike.name }}</h2>
         <span class="price">₱{{ bike.price }}</span><br>
         <a href="{% url 'bike_detail' bike.pk %}" class="btn">View</a>
-        <a href="#" class="btn">Add to Cart</a>
+        <a href="{% url 'add_to_cart' bike.pk %}" class="btn">Add to Cart</a>
     </div>
     {% empty %}
         <strong><p>Oops! No bike found!</p></strong>
     {% endfor %}
 </section>
-
-<!--<h1>Your Cart</h1>-->
-<!--<div id="cart"></div>-->
-<!--<div id="total">Total: ₱0</div>-->
-<!--<button class="btn" onclick="buy()">Buy Now</button>-->
 {%  endblock content %}

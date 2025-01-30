@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>Your Cart</h2>
+<table>
+    <tr>
+        <th>Bike</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Action</th>
+    </tr>
+    {% for item in cart_items %}
+    <tr>
+        <td>{{ item.bike.name }}</td>
+        <td>₱{{ item.bike.price }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>₱{{ item.total_price }}</td>
+        <td><a href="{% url 'remove_from_cart' item.id %}" class="btn">Remove</a></td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">Your cart is empty.</td></tr>
+    {% endfor %}
+</table>
+<h3>Total: ₱{{ total_price }}</h3>
+{% endblock %}

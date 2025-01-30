@@ -15,17 +15,6 @@ body {
     background: #A59D84;
 }
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #C1BAA1;
-    padding: 30px;
-    transition: opacity 0.3s ease;
-    z-index: 9999;
-}
-
 footer {
     background: #C1BAA1;
     padding: 20px;
@@ -36,22 +25,94 @@ footer p {
     color: #ECEBDE;
 }
 
-header a {
+.logo-container {
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    margin-left: 8%;
-    color: #ECEBDE;
-    font-size: 25px;
-    padding: 10px 20px 10px;
-    background-color: #A59D84;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
-header a:hover {
-    color: #ECEBDE;
+.logo-img {
+    border-radius: 8px; /* Subtle rounding for a polished look */
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+/*Header Navbar*/
+.navbar {
     background-color: #C1BAA1;
+    color: #ffffff;
+    width: 100%;
+    padding: 30px 0 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.container.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent spacing */
+}
+
+nav ul.nav-list {
+    display: flex;
+    gap: 25px; /* Even spacing between nav items */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul.nav-list li {
+    display: inline-block;
+}
+
+.nav-link {
+    color: #ECEBDE;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: 10px 20px 10px;
+    background-color: #A59D84;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+/* Hover Styles */
+.nav-link:hover {
+    background-color: #C1BAA1;
+    color: #ECEBDE;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
+
+/* Logout Button */
+.logout-button {
+    background: none;
+    border: none;
+    color: #ECEBDE;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: 10px 20px 10px;
+    background-color: #A59D84;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Logout Button Hover */
+.logout-form .logout-button:hover {
+    background-color: #C1BAA1;
+    color: #ECEBDE;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+/*End Navbar*/
 
 .input_button {
     border: none;
@@ -96,8 +157,8 @@ p {
 
 /*PRODUCTS CSS*/
 main {
-    margin-top: 125px;
-    padding: 20px;
+    /*margin-top: 125px;*/
+    /*padding: 20px;*/
 }
 
 main h2, span, p {

@@ -1,0 +1,14 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+  <h2>Profile Details</h2>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>First Name:</strong> {{ user.first_name }}</p>
+  <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+  <p><strong>Age:</strong> {{ user.age }}</p>
+  <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
+
+  <a href="{% url 'profile_edit' %}">Edit Profile</a> |
+  <a href="{% url 'profile_delete' %}" style="color: red;">Delete Account</a>
+{% endblock %}

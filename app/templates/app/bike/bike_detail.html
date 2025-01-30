@@ -16,13 +16,12 @@
         <a href="{% url 'bike_delete' bike.id %}" class="anchor">- Delete Bike</a>
         <hr>
 
-        <h3 style="color: #ECEBDE; display: inline-block">Comments | </h3>
+        <h3 style="color: #ECEBDE; display: inline-block;">Comments</h3>
         <form method="POST" action="{% url 'comment_create' bike.pk %}">
             {% csrf_token %}
             <textarea name="body" placeholder="Write a comment..." required></textarea>
-            <button type="submit">Post Comment</button>
+            <input type="submit" class="btn" value="Add Comment">
         </form>
-        <hr>
 
         {% if not bike.comments.all %}
             <p>No comments yet.</p>

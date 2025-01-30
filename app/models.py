@@ -43,7 +43,7 @@ class Bike(models.Model):
         return reverse("bike_detail", kwargs = {"pk": self.pk})
 
 class Review(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     feedback = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 

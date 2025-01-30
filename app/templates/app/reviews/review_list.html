@@ -7,8 +7,8 @@
         <a href="{% url 'review_detail' review.pk %}" class="review_link">
         <fieldset>
             <legend><h2>{{ review.user }}</h2></legend>
-            <p>{{ review.created_date }}</p>
-            <p>{{ review }}</p>
+            <strong><p>{{ review }}</p></strong>
+            <small style="color: #ECDFCC;">{{ review.created_date }}</small>
         </fieldset>
         </a>
     {% endfor %}

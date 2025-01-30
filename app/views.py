@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.contrib.auth import get_user_model
 from .models import Category, Bike, Review, Supplier, Comment
-from .forms import CommentForm
+from .forms import CommentForm, ReviewForm
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
@@ -100,14 +100,18 @@ class ReviewDetailView(DetailView):
     context_object_name = 'review'
     template_name = 'app/reviews/review_detail.html'
 
-class ReviewCreateView(CreateView):
+class ReviewCreateView(LoginRequiredMixin, CreateView):
     model = Review
-    fields = ['user', 'feedback']
+    fields = ['feedback']
     template_name = 'app/reviews/review_create.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user  # Assign the logged-in user
+        return super().form_valid(form)
 
 class ReviewUpdateView(UpdateView):
     model = Review
-    fields = ['user', 'feedback']
+    fields = ['feedback']
     template_name = 'app/reviews/review_update.html'
 
 class ReviewDeleteView(DeleteView):
